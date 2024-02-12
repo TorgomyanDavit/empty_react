@@ -5,7 +5,7 @@ function App() {
 
 
   useEffect(() => {
-      fetch('https://backend.holtrinity.com/setCookie')
+      fetch('https://backend.holtrinity.com/authentication')
         .then(response => {
           // Check if the response is successful
           if (!response.ok) {
