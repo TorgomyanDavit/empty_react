@@ -8,7 +8,7 @@ function App() {
     // Fetch data from Node.js server
     const fetchData = async () => {
       try {
-        const response = await fetch('https://www.holtrinity.com/getToken', {
+        const response = await fetch('https://backend.holtrinity.com/getToken', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
