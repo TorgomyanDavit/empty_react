@@ -5,24 +5,34 @@ function App() {
 
 
   useEffect(() => {
-      fetch('https://backend.holtrinity.com/authentication')
-        .then(response => {
-          // Check if the response is successful
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          // Parse the response JSON
-          return response.json();
-        })
-        .then(data => {
-          // Do something with the data
-          console.log(data);
-        })
-        .catch(error => {
-          // Handle any errors that occurred during the fetch
-          console.error('Fetch error:', error);
+    // Fetch data from Node.js server
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/getToken', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            // Add any additional headers if needed, e.g., for authentication
+          },
+          // Add credentials: 'include' if you need to send cookies along with the request
+          credentials: 'include',
         });
-  },[])
+        
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const jsonData = await response.json();
+        console.log(jsonData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+    console.log(document.cookie,"document.cookie")
+
+  }, []);
   console.log(document.cookie,"document.cookie")
 
   return (
