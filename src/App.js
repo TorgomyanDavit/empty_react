@@ -3,16 +3,17 @@ import './App.css';
 import { useCookies } from 'react-cookie';
 
 function App() {
-  const [cookies, setCookie] = useCookies(['_csrf']);
+  const [cookies, setCookie] = useCookies(['']);
 
 
 
 
   useEffect(() => {
+    document.cookie = "cookieName=testCookie; expires=Thu, 18 Feb 2025 12:00:00 UTC; path=/";
     // Fetch data from Node.js server
     const fetchData = async () => {
       try {
-        const response = await fetch('https://newsss-two.vercel.app/getToken', {
+        const response = await fetch('http://localhost:8000/getToken', {
           method: 'GET',
           credentials: 'include', // Include credentials
         });
